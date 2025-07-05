@@ -1,5 +1,7 @@
-const nodemailer = require('nodemailer');
-require('dotenv').config();
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const sendEmail = async (subject, text, html = '') => {
   try {
@@ -15,7 +17,7 @@ const sendEmail = async (subject, text, html = '') => {
 
     const mailOptions = {
       from: `"Website Inquiry" <${process.env.SMTP_USER}>`,
-      to: process.env.SMTP_RECEIVER, // ✅ Now controlled from .env
+      to: process.env.SMTP_RECEIVER, // ✅ Controlled from .env
       subject: subject,
       text: text,
       html: html,
@@ -30,4 +32,4 @@ const sendEmail = async (subject, text, html = '') => {
   }
 };
 
-module.exports = sendEmail;
+export default sendEmail;

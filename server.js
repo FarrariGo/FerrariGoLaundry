@@ -1,11 +1,15 @@
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const sendEmail = require('./Routes/SMTP');
-const http = require('http');
+// index.js (or server.js)
+
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import sendEmail from './Routes/SMTP.js';
+import http from 'http';
+
 dotenv.config();
 
 const app = express();
+
 // Middlewares
 app.use(cors());
 app.use(express.json());
@@ -35,11 +39,11 @@ app.post('/api/send-email', async (req, res) => {
   }
 });
 
-
 // Start server
 const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
-server.listen(PORT,"0.0.0.0",()=>console.log(`Server is listening on port : ${PORT}`));
+server.listen(PORT, '0.0.0.0', () =>
+  console.log(`Server is listening on port: ${PORT}`)
+);
+
+// Export app if needed for testing or integration
 export default app;
