@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const sendEmail = require('./Routes/SMTP');
-import http from "http";
+const http = require('http');
 dotenv.config();
 
 const app = express();
